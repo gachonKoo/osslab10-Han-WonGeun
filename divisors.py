@@ -1,8 +1,17 @@
-# 사용자가 입력한 숫자의 약수를 구하는 프로그램
-number = int(input("Enter a number: "))  # 숫자를 입력받습니다.
+import sys
 
-# 1부터 입력받은 숫자까지의 약수를 찾기 위한 리스트 생성
-divisors = [i for i in range(1, number + 1) if number % i == 0]
+# 명령줄 인수 확인
+if len(sys.argv) < 2:
+    print("Usage: python divisors.py <number>")
+    sys.exit(1)  # 프로그램 종료
 
-# 결과 출력
-print("Divisors of", number, "are:", divisors)
+# 명령줄에서 숫자 입력받기
+number = int(sys.argv[1])
+
+# 1부터 number까지 반복하며 약수를 찾기
+for i in range(1, number + 1):
+    if number % i == 0:  # 나머지가 0이면 약수
+        print(i, end=" ")
+
+# 마지막 줄바꿈
+print()
